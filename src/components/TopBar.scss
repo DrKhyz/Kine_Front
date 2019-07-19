@@ -1,0 +1,64 @@
+@import "../sass/main.scss";
+
+.topBar {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10vh;
+  grid-template-areas: "leftBtn title rightBtn";
+
+  align-items: center;
+  justify-items: center;
+  place-items: stretch;
+  width: 100vw;
+  height: 10vh;
+  background: transparent;
+
+  .btn {
+    display: flex;
+    align-items: center;
+
+    font-size: 1rem;
+    @include button-text-color($btn-grey);
+    cursor: pointer;
+    padding: 0 5vw;
+
+    &.left {
+      grid-area: leftBtn;
+      justify-self: start;
+    }
+    &.right {
+      grid-area: rightBtn;
+      justify-self: end;
+    }
+    &.isActive {
+      @include button-text-color($btn-orange);
+      animation-name: btnGrow;
+      animation-duration: 1s;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    grid-area: title;
+
+    color: $btn-orange;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes btnGrow {
+  0% {
+    font-size: 1rem;
+  }
+
+  50% {
+    font-size: 1.5rem;
+  }
+  100% {
+    font-size: 1rem;
+  }
+}

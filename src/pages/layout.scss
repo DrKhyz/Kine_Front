@@ -1,0 +1,45 @@
+@import "../sass/main.scss";
+
+.page {
+  display: grid;
+  grid-template-rows: 10vh 80vh;
+  width: 100vw;
+  .topBar {
+    grid-row: 1;
+  }
+  .pageBodyHistory {
+    grid-row: 2;
+  }
+  .pageBodySummary {
+    grid-row: 2;
+  }
+  .pageBodyEvents {
+    grid-row: 2;
+
+    display: grid;
+    grid-template-rows: 8vh 72vh;
+    .timeBar {
+      grid-row: 1;
+    }
+    .options {
+      grid-row: 2;
+
+      display: grid;
+      height: 100%;
+      grid-template-rows: auto;
+
+      & > :first-child {
+        height: auto;
+      }
+      & > :nth-child(2) {
+        height: auto;
+      }
+      & > :nth-last-child(2) {
+        height: auto;
+      }
+      & > :last-child {
+        height: auto;
+      }
+    }
+  }
+}

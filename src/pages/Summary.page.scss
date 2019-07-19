@@ -1,0 +1,29 @@
+@import "../sass/main.scss";
+
+.pageBodySummary {
+  display: grid;
+  grid-template-areas: "date type" "context quantity" "comment comment";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: space-around;
+  align-content: space-around;
+  grid-gap: 15px;
+  padding: 15px;
+  background-color: $primary-dark;
+
+  & > :first-child {
+    grid-area: date;
+  }
+  & > :nth-child(2) {
+    grid-area: type;
+  }
+  & > :nth-last-child(3) {
+    grid-area: context;
+  }
+  & > :nth-last-child(2) {
+    grid-area: quantity;
+  }
+  & > :last-child {
+    grid-area: comment;
+  }
+}

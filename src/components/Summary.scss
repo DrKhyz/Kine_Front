@@ -1,0 +1,31 @@
+@import "../sass/main.scss";
+
+.summaryItems {
+  display: grid;
+  grid-template-rows: 7vh auto auto;
+  grid-gap: 10px;
+
+  height: minmax(min-content auto);
+  border-radius: 3vw;
+  padding: 0 5vw;
+  background-color: #fff;
+  h2 {
+    grid-row: 1;
+    font-size: 1.2rem;
+    font-weight: 500;
+    align-self: center;
+    text-transform: uppercase;
+  }
+  p,
+  ul {
+    grid-row: 2;
+    font-size: 1rem;
+    align-self: center;
+    li {
+      padding: 5px 0;
+    }
+  }
+  .stylePlus {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,86 @@
+//Give dimensions to a box
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// Browser Prefixes
+@mixin transform($transform) {
+  -ms-transform: $transform;
+  -webkit-transform: $transform;
+  -o-transform: $transform;
+  -moz-transform: $transform;
+  transform: $transform;
+}
+
+// Button's background changes on hover and active
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 15%);
+  }
+}
+
+// Button's color changes on hover and active
+@mixin button-text-color($text-color) {
+  color: $text-color;
+  transition: 0.4s;
+  &:hover {
+    color: darken($text-color, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    color: darken($text-color, 15%);
+  }
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// Shadows for the modalEventBtn
+@mixin shadowEffect {
+  -webkit-box-shadow: 2px 3px 14px 0px $btn-grey,
+    inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 3px 14px 0px $btn-grey,
+    inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+}
+
+// Gradient effect
+@mixin gradientEffect($color1: #ededed, $color2: #ffffff) {
+  background: $color1;
+  background: -moz-linear-gradient(top, $color1 0%, $color2 100%);
+  background: -webkit-linear-gradient(top, $color1 0%, $color2 100%);
+  background: linear-gradient(to bottom, $color1 0%, $color2 100%);
+}
+
+// Triangle for date and time component
+@mixin triangle($color: #fff, $size: 10px) {
+  &::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: $size solid $color;
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    position: absolute;
+    bottom: $size * -1;
+    left: calc(50% - #{$size});
+  }
+}

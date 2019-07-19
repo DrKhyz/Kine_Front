@@ -1,0 +1,30 @@
+@import "../sass/main.scss";
+
+.pageBodyInfos {
+  padding: 8vmin;
+  text-align: left;
+  color: $primary-dark;
+  line-height: 1.8rem;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  @include gradientEffect;
+  .firstBlock {
+    margin-bottom: 10vmin;
+  }
+  h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  p {
+    text-align: justify;
+    padding: 1vh;
+  }
+  ul {
+    padding-left: 8vmin;
+  }
+}

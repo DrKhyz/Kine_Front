@@ -1,0 +1,160 @@
+@import "../sass/main.scss";
+
+$btnAddEventDiameter: 50px;
+$navHeight: 10vh;
+$modalEventsBtn: (
+  "Poo": $poo,
+  "Pee": $pee,
+  "Activity": $activity,
+  "Drink": $drink
+);
+
+.navBar {
+  //Style the Menu of the Navbar
+  .bottomNavBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "history events info" "history events info";
+
+    font-size: 35 / 100 * $navHeight;
+    bottom: 0;
+    height: $navHeight;
+    width: 100vw;
+    background-color: $primary-color;
+    a {
+      color: $almost-white;
+      text-decoration: none;
+    }
+    z-index: 2;
+    .activeLink {
+      color: $primary-light;
+    }
+
+    .history {
+      grid-area: history;
+      align-self: center;
+      justify-self: start;
+      width: 100%;
+
+      .calendar {
+        padding-top: 1vh;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+    .about {
+      grid-area: info;
+      justify-self: end;
+      align-self: center;
+      width: 100%;
+      .infos {
+        padding-top: 1vh;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+    .events {
+      grid-area: events;
+      justify-self: center;
+      align-self: center;
+      text-decoration: none;
+      color: $almost-white;
+      cursor: pointer;
+      width: 100%;
+      .new {
+        padding-top: 1vh;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  //Style and Show (or not) the event menu
+  .modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "Poo Pee" "Activity Drink";
+
+    position: absolute;
+    bottom: $navHeight;
+    height: 100 - $navHeight;
+    width: 100vw;
+    overflow: hidden;
+    background-color: $primary-dark;
+    will-change: transform, opacity;
+
+    %btn {
+      display: flex;
+      @include box(35vmin);
+
+      border-radius: 50%;
+      justify-self: center;
+      align-self: center;
+
+      color: $text-color-dark;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 4vmin;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // It's like a map... we don't have to write the same code for our 4 buttons
+    @each $event, $bgColor in $modalEventsBtn {
+      .btn-#{$event} {
+        @extend %btn;
+        border: 8px solid $bgColor;
+        @include button-bg($almost-white);
+        grid-area: $event;
+      }
+    }
+  }
+  .modalHidden {
+    .modal {
+      opacity: 0;
+      transition: opacity 0.5s ease 0.5s;
+      pointer-events: none;
+
+      %btn {
+        animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+          both;
+      }
+    }
+  }
+  .modalVisible {
+    .modal {
+      opacity: 1;
+      pointer-events: auto;
+      %btn {
+        animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+      }
+    }
+  }
+}
+// animation scale-in-center
+@include keyframes(scale-in-center) {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+// animation scale-out-center
+@include keyframes(scale-out-center) {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

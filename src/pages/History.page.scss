@@ -1,0 +1,84 @@
+@import "../sass/main.scss";
+
+.pageBodyHistory {
+  display: grid;
+  grid-template-rows: 8vh 72vh;
+
+  .historyDateSelector {
+    grid-row: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-light;
+    color: $primary-dark;
+    .btn {
+      color: $primary-dark;
+      margin: 0 2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  }
+  .historyContainer {
+    grid-row: 2;
+    height: 100%;
+
+    align-self: flex-start;
+    overflow: scroll;
+
+    .historyFirstCo {
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      height: 100%;
+      display: grid;
+      padding: 5vw;
+      h2 {
+        align-self: center;
+      }
+    }
+
+    .eventRow {
+      display: grid;
+      grid-template-rows: 50% 50%;
+      grid-template-columns: 25% 50% 25%;
+      grid-template-areas: "time nature volume" "details details details";
+      background-color: $almost-white;
+      border-bottom: 2px solid $primary-light;
+
+      height: 11vh;
+      & > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1vw;
+        font-size: 1.2rem;
+        color: $primary-dark;
+      }
+      .eventTime {
+        grid-area: time;
+      }
+      .eventNature {
+        grid-area: nature;
+      }
+      .eventVolume {
+        grid-area: volume;
+      }
+      .rowDetails {
+        grid-area: details;
+        background-color: #fff;
+        color: $btn-grey;
+      }
+      .eventType {
+        font-size: 0.9rem;
+        padding: 2vw;
+      }
+      .eventContext {
+        font-size: 0.8rem;
+        display: flex;
+        li {
+          padding: 2vw;
+        }
+      }
+    }
+  }
+}

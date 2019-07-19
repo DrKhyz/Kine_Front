@@ -1,0 +1,31 @@
+@import "../sass/main.scss";
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 30px;
+  justify-content: space-around;
+  text-align: left;
+  width: 90vw;
+
+  h2 {
+    font-size: 1.2rem;
+  }
+  textarea {
+    text-align: left;
+    resize: none;
+    border: 1px solid black;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: rem(8) rem(15);
+    max-height: 10vh;
+    color: $primary-dark;
+    font-family: "Montserrat", serif;
+
+    &::placeholder {
+      color: $primary-dark;
+    }
+  }
+}
